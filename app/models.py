@@ -1,6 +1,6 @@
 import pylast
 import pandas as pd
-from sklearn import preprocessing
+import numpy as np
 import psycopg2
 import datetime
 import config
@@ -125,14 +125,18 @@ def Convert(table, artist1, artist2, artist3, artist4, artist5):
     return tag_frame
 
 
+def normalized(x, axis=-1, order=2):
+    l2 = np.atleast_1d(np.linalg.norm(x, order, axis))
+    l2[l2 == 0] = 1
+    return x / np.expand_dims(l2, axis)
+
+
 def Scale(table, artist1, artist2, artist3, artist4, artist5):
     tag_frame = Convert(table, artist1, artist2, artist3, artist4, artist5)
 
     # Scale tag weights to 100
     x = tag_frame['weight']
-    min_max_scaler = preprocessing.MinMaxScaler()
-    x_scaled = min_max_scaler.fit_transform(x.reshape(-1, 1))
-    df = pd.DataFrame(x_scaled) * 100
+    df = normalized(x.reshape(-1, 1), 0) * 100
     tag_frame['weight'] = df
 
     # When calling API, it would always bring the results in different orders
