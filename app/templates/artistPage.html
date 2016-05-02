@@ -1,0 +1,58 @@
+<html lang="en">
+{% extends 'header.html' %}
+	<head>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css')}}">
+		<link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	    <link href="/static/css/bootstrap-responsive.min.css" rel="stylesheet">
+	    <script src="http://code.jquery.com/jquery-latest.js"></script>
+	    <script src="/static/js/bootstrap.min.js"></script>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	{% block scripts %}
+	{{super()}}
+		<script type="text/javascript" src="{{url_for('static', filename='js/pace.min.js') }}"></script>
+		<script type="text/javascript" src="{{url_for('static', filename='js/artistPage.js') }}"></script>
+		<script src="https://apis.google.com/js/client.js?onload=init"></script>
+	{% endblock %}
+	{% block styles %}
+    {{super()}}
+    	<link rel="stylesheet" href="{{url_for('.static', filename='css/artistPage.css')}}">
+			<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+  	{% endblock %}
+	</head>
+
+{% block content %}
+<div class="jumbotron" align="middle">
+  <h1 id="artistName">{{ artist }}</h1>
+</div>
+<div class="mainContent">
+  <h1 align=middle> Artist Bio </h1>
+  <br/>
+  <div class="artistBio" align=middle></div>
+	<br/>
+	<br/>
+	<h1 align=middle> Top Albums </h1>
+	<div class=container align=middle>
+		<div align=middle class="topAlbums"></div>
+	</div>
+	<br/>
+	<br/>
+	<div class="topSongs">
+	  <h1 align=middle> Top Songs </h1>
+	  <div class="topTracks1" align=middle></div>
+		<div class="video1" align=middle></div>
+		<br/>
+	  <div class="topTracks2" align=middle></div>
+		<div class="video2" align=middle></div>
+		<br/>
+	  <div class="topTracks3" align=middle></div>
+		<div class="video3" align=middle></div>
+	</div>
+	<br/>
+	<br/>
+	<p> *Note that this page relies on data from other websites. If you have an adblock enabled,
+		it's possible some of the content will not show (I am not getting ad revenue either way).
+		Also for smaller artists, it's possible that some albums and videos won't show because last.fm
+		doesn't have the information.
+	</p>
+</div>
+{% endblock %}

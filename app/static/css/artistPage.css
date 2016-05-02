@@ -1,0 +1,51 @@
+body{
+	font-family: 'Raleway', sans-serif;
+	background-color: #e3e3e3;
+}
+.jumbotron{
+	background-color: #E67E22;
+}
+.jumbotron h1{
+	color: #e3e3e3;
+	font-weight: lighter;
+}
+
+.mainContent{
+  padding-left: 250px;
+  padding-right: 250px;
+}
+.container{
+	width: auto;
+	margin: 0 auto;
+}
+.album0 {
+	width: 33%;
+	padding-right: 20px;
+	float: left;
+}
+.album1 {
+	width: 33%;
+	padding-right: 20px;
+	float: left;
+}
+.album2 {
+	width: 33%;
+	padding-right: 20px;
+	float: left;
+}
+.topSongs {
+
+}
+div[class^="video"]{
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 25px;
+	height: 0;
+}
+div[class^="video"] iframe{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}

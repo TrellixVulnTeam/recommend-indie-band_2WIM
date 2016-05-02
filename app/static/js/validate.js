@@ -1,0 +1,39 @@
+$(document).ready(function() {
+  $("#showImage").on("click", function() {
+    artists = []
+    var artist1 = $("#artist1").val();
+    artists.push(artist1);
+    var artist2 = $("#artist2").val();
+    artists.push(artist2);
+    var artist3 = $("#artist3").val();
+    artists.push(artist3);
+    var artist4 = $("#artist4").val();
+    artists.push(artist4);
+    var artist5 = $("#artist5").val();
+    artists.push(artist5);
+    i = 1;
+    artists.forEach(function(artist) {
+      console.log(artist);
+      validate(artist, i);
+      i++;
+    })
+  });
+
+  function validate(artist, i){
+    $.ajax({
+      type: 'POST',
+      url: 'http://ws.audioscrobbler.com/2.0/',
+      data: 'method=artist.getinfo' +
+        '&artist=' + artist +
+        '&autocorrect=1' +
+        '&api_key=bd7e293a51b53716d502db4d74835f01' +
+        '&format=json',
+      success: function(data) {
+        $('#artist'+i).val(data.artist.name);
+      },
+      error: function(code, message) {
+        console.log('there was an error'+ message);
+      }
+    });
+  }
+});

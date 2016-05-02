@@ -1,0 +1,85 @@
+<html lang="en">
+{% extends 'header.html' %}
+	<head>
+	{% block scripts %}
+	{{super()}}
+		<script type="text/javascript" src="{{url_for('static', filename='js/pace.min.js') }}"></script>
+		<script type="text/javascript" src="{{url_for('static', filename='js/homeButton.js') }}"></script>
+		<script type="text/javascript" src="{{url_for('static', filename='js/validate.js') }}"></script>
+	{% endblock %}
+	{% block styles %}
+    {{super()}}
+    	<link rel="stylesheet" href="{{url_for('.static', filename='css/home.css')}}">
+			<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+  	{% endblock %}
+	</head>
+
+{% block content %}
+<body class="mainContent">
+<div class="jumbotron" align="middle">
+  <h1>Indie Band Recommender</h1>
+  <p> Enter in your 5 favorite bands (of any size or genre) and we'll recommend 25 indie bands you may also enjoy.</p>
+	<p> Interested in small bands only? <a href="/small"> Go here to filter by smaller bands!</a></p>
+</div>
+<div class="container center_div" align=middle>
+{% from "_formhelpers.html" import render_field %}
+	<form method="Post" action="/results" id="myForm">
+		{{ form.hidden_tag() }}
+		{% if error %}
+		<p class=error><strong>Error:</strong> {{ error }}
+  {% endif %}
+	<div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-xs-12" align=middle>
+
+		{{ render_field(form.artist1, class="form-control", id="artist1") }}
+
+		{{ render_field(form.artist2, class="form-control", id="artist2") }}
+
+		{{ render_field(form.artist3, class="form-control", id="artist3") }}
+
+		{{ render_field(form.artist4, class="form-control", id="artist4")}}
+
+		{{ render_field(form.artist5, class="form-control", id="artist5")}}
+
+	<br/>
+	<p><input id="showImage" type=submit value=Go type="button" class="btn btn-default"></p>
+	</div>
+</form>
+ </div>
+ <br/>
+ <br/>
+ <br/>
+ <div align="middle">
+ 	<p>Powered by: </p>
+ 	<img src="{{ url_for('static', filename='images/lastfm_grey.gif') }}" height=50;>
+ </div>
+ </body>
+
+ <div id="hiddenContent">
+ 	<br/>
+ 	<br/>
+ 	<br/>
+ 	<h3 align="middle"> Please wait while we load your recommendations. This may take a minute.</h3>
+		{% for tag in tags %}
+		  <li><h3 align=left>{{ tag }}</h3></li>
+		{% endfor %}
+		{% for weight in weights %}
+		  <li><h3 align=middle>{{ weight }}%</h3></li>
+		{% endfor %}
+</div>
+<br/>
+<br/>
+<div id="donate" align=middle>
+	<p> Servers are expensive. If this website helped you find a new
+		band you enjoy, I'd really appreciate if you threw few bones my way
+		to help pay for my monthly hosting costs.</p>
+	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+	<input type="hidden" name="cmd" value="_s-xclick">
+	<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+	">
+	<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+	<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+	</form>
+</div>
+
+ {% endblock %}
+</html>

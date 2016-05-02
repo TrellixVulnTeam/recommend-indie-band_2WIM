@@ -1,0 +1,43 @@
+<html lang="en">
+{% extends "header.html" %}
+	<head>
+  {% block styles %}
+    {{super()}}
+  <link rel="stylesheet" href="{{url_for('.static', filename='css/how.css')}}">
+	<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+  {% endblock %}
+  {% block scripts %}
+  {{ super() }}
+    <script type="text/javascript" src="{{url_for('static', filename='js/pace.min.js') }}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/showMore.js') }}"></script>
+{% endblock %}
+    <link href="/static/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/static/js/bootstrap.min.js"></script>
+	</head>
+
+{% block content %}
+<body align='middle'>
+	<div class="jumbotron" align="middle">
+	  <h1>How it works</h1>
+	</div>
+  <br/>
+  <br/>
+  <p> Last.fm is a music website with information on a ton of musical artists.
+    Each artist gets tags assigned to them by users of the sight. Luckily, Last.fm
+    is nice enough to provide an API so developers like myself can get to the information.
+  </p>
+  <br/>
+  <p> This website takes the five artists you've given, get their tags from Last.fm, then
+    does some calculations to see find similar artists. This is not the same as Last.fm's similar artists feature. This is my own algorithm and should produce different results.
+		On the results page, the percentages indicate why the particular artist was chosen. For example, if you see 'shoegaze 100%',
+    then both artists had the same level of shoegaze on their tags.
+  </p>
+  <br/>
+  <br/>
+  <p> If you want to check out the code behind this, it's all open source
+    <a href="https://github.com/dschuler36/IndieMusicRecommender"> on Github.</a>
+    Feel free to make a pull request if you're a dev!
+  </p>
+</body>
+{% endblock %}
