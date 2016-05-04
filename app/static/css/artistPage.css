@@ -11,8 +11,8 @@ body{
 }
 
 .mainContent{
-  padding-left: 250px;
-  padding-right: 250px;
+  margin-left: 10%;
+	margin-right: 10%;
 }
 .container{
 	width: auto;
