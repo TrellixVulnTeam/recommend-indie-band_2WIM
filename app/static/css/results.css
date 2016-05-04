@@ -1,11 +1,15 @@
 body{
+	background-color: #A2D9CE;
+	/*
 	background: linear-gradient(to bottom, #73C6B6, #e3e3e3);
+	*/
 	font-family: 'Raleway', sans-serif;
 }
 .results h1 h2{
 	font-weight: lighter;
 }
 .img-circle{
+	border: 2px solid #DCF1ED;
 	border-radius: 50%;
 	float: left;
 }
@@ -15,8 +19,10 @@ body{
 	padding-right: 5px;
 	padding-bottom: 5px;
 	overflow: hidden;
-	border: 1px solid;
+	background-color: #DCF1ED;
+	border: 2px solid #516D67;
 	border-radius: 5px;
+	color: #3D514D;
 }
 .artistName{
 	padding-left: 50px;

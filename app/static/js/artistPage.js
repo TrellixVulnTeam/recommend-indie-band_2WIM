@@ -1,7 +1,6 @@
 $(document).ready(function() {
   // Assign random color to jumbotron
-  var colors = ['#E67E22', '#D35400', '#34495E', '#2ECC71', '#27AE60', '#16A085',
-                '#1ABC9C', '#2980B9', '#CB4335'];
+  var colors = ['#212F3C', '#196F3D', '#0E6655', '#117864', '#154360'];
   var randColor = colors[Math.floor(Math.random() * colors.length)];
   $('.jumbotron').css('background-color', randColor);
 
@@ -63,9 +62,11 @@ function getAlbums(final){
             $('<div>', {
               class: 'album'+i
           }).appendTo('.topAlbums');
-
-          //$('.topAlbums').append('<div class="album' + i + '">');
+          console.log(data.topalbums.album[i].image[2]['#text'])
           $('.album'+i).append('<h3>' + data.topalbums.album[i].name + '</h3>');
+          if (!$.trim(data.topalbums.album[i].image[2]['#text'])) {
+            $('.album'+i).append('<br/><p>Album art not found.</p>');
+          };
           $('.album'+i).append('<img src="' + data.topalbums.album[i].image[2]['#text'] + '"/>');
           i++;
         };
@@ -77,12 +78,12 @@ function getAlbums(final){
   });
 }
 function makeRequest(q, i){
-  // e.preventDefault();
   var request = gapi.client.youtube.search.list({
     part: "snippet",
     type: "video",
+    videoEmbeddable: true,
     q: q,
-    maxResults: 1,
+    maxResults: 1
   });
 
   request.execute(function(response) {
@@ -105,7 +106,7 @@ function init() {
     i = 1;
     $.each(arr, function(i, val) {
       i++;
-      var myRequest = artistName + $(val).html();
+      var myRequest = artistName + '+' + $(val).html();
       makeRequest(myRequest, i);
     })
   });

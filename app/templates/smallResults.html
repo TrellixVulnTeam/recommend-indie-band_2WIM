@@ -23,7 +23,7 @@
 
 	{% block content %}
 	<div class="results" align=left>
-	  <h1 align=middle> Here are some bands we think you may enjoy: </h1>
+	  <h1 align=middle style="color: #2B363C"> Here are some bands we think you may enjoy: </h1>
 	<br/><br/>
 	{% for artist in smallResults %}
 	<div class="artistSection">
@@ -34,7 +34,7 @@
 			<p style="text-decoration: underline;"><a style="color: black" href="/artist/{{ artist[0] }}">Go to Artist's Page </a></p>
 		</div>
 				<div class="tags">
-					<p style="text-decoration: underline">These tags matched with the artists you gave us: </p>
+					<p style="text-decoration: underline">These tags matched: </p>
 					<br/>
 					{% if artist[1] != 0 %}
 						<p> {{ artist[6] }} {{ artist[1] }}%</p>

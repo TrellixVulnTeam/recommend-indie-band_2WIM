@@ -23,21 +23,17 @@
 	</div>
   <br/>
   <br/>
-  <p> Last.fm is a music website with information on a ton of musical artists.
-    Each artist gets tags assigned to them by users of the sight. Luckily, Last.fm
+  <p> This website utilizes <a href="www.last.fm">last.fm</a>, which is a music website conttaining a ton of data about artists.
+    Each artist gets tags assigned to them by users of the site. Luckily, Last.fm
     is nice enough to provide an API so developers like myself can get to the information.
   </p>
   <br/>
-  <p> This website takes the five artists you've given, get their tags from Last.fm, then
-    does some calculations to see find similar artists. This is not the same as Last.fm's similar artists feature. This is my own algorithm and should produce different results.
+  <p> This website takes the five artists you've given, gets their tags from Last.fm, then
+    does some calculations to find similar artists. This is not the same as Last.fm's similar artists feature. This is my own algorithm and should produce different results.
 		On the results page, the percentages indicate why the particular artist was chosen. For example, if you see 'shoegaze 100%',
-    then both artists had the same level of shoegaze on their tags.
+    then the scaled sum of your given artists and the results artist had the same level of shoegaze.
   </p>
   <br/>
   <br/>
-  <p> If you want to check out the code behind this, it's all open source
-    <a href="https://github.com/dschuler36/IndieMusicRecommender"> on Github.</a>
-    Feel free to make a pull request if you're a dev!
-  </p>
 </body>
 {% endblock %}
