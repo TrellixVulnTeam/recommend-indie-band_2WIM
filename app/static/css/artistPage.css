@@ -18,20 +18,52 @@ body{
 	width: auto;
 	margin: 0 auto;
 }
+img{
+	height: auto;
+	width: auto;
+}
+.topAlbums {
+	border: 2px solid black;
+	overflow: hidden;
+
+}
+.table {
+  display:table;
+  width:100%;
+  overflow:hidden;
+}
+.row1 {
+  display:table-row;
+}
+.row2 {
+  display:table-row;
+}
+div[class^="cell"] {
+  display:table-cell;
+  width:33%;
+  vertical-align:bottom;
+}
 .album0 {
 	width: 33%;
 	padding-right: 20px;
 	float: left;
+	border: 2px solid blue;
+	padding-bottom: 500em;
+	margin-bottom: -500em;
 }
 .album1 {
 	width: 33%;
 	padding-right: 20px;
 	float: left;
+	border: 2px solid blue;
 }
 .album2 {
 	width: 33%;
 	padding-right: 20px;
 	float: left;
+	border: 2px solid blue;
+	padding-top: 500em;
+	margin-top: -500em;
 }
 .topSongs {
 

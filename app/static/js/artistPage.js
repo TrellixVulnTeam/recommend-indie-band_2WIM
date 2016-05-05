@@ -60,14 +60,13 @@ function getAlbums(final){
       $(data.topalbums.album).each(function(){
         while (i <= 2) {
             $('<div>', {
-              class: 'album'+i
-          }).appendTo('.topAlbums');
-          console.log(data.topalbums.album[i].image[2]['#text'])
-          $('.album'+i).append('<h3>' + data.topalbums.album[i].name + '</h3>');
+              class: 'cell'+i
+          }).appendTo('.row1');
+          $('.cell'+i).append('<h3>' + data.topalbums.album[i].name + '</h3>');
           if (!$.trim(data.topalbums.album[i].image[2]['#text'])) {
-            $('.album'+i).append('<br/><p>Album art not found.</p>');
+            $('.row2').append('<br/><p>Album art not found.</p>');
           };
-          $('.album'+i).append('<img src="' + data.topalbums.album[i].image[2]['#text'] + '"/>');
+          $('.row2').append('<div class="cell"><img src="' + data.topalbums.album[i].image[2]['#text'] + '"/></div>');
           i++;
         };
       });
