@@ -91,7 +91,6 @@ def getTags(table, artist1, artist2, artist3, artist4, artist5):
     for tag5 in info5:
         tag_list.append(str(tag5[0]))
         tag_list.append(tag5[1])
-
     return tag_list
 
 
@@ -125,19 +124,20 @@ def Convert(table, artist1, artist2, artist3, artist4, artist5):
     return tag_frame
 
 
-def normalized(x, axis=-1, order=2):
-    l2 = np.atleast_1d(np.linalg.norm(x, order, axis))
-    l2[l2 == 0] = 1
-    return x / np.expand_dims(l2, axis)
-
-
 def Scale(table, artist1, artist2, artist3, artist4, artist5):
     tag_frame = Convert(table, artist1, artist2, artist3, artist4, artist5)
+    tag_frame = tag_frame.sort_values(by='weight', ascending=False)
+    tag_frame = tag_frame[0:6]
 
     # Scale tag weights to 100
-    x = tag_frame['weight']
-    df = normalized(x.reshape(-1, 1), 0) * 100
-    tag_frame['weight'] = df
+    tagMax = tag_frame['weight'].iloc[0]
+    tagMin = tag_frame['weight'].iloc[-1]
+    x = []
+    for weight in tag_frame['weight']:
+        scaledWeight = (((weight - tagMin) * 100) / (tagMax - tagMin))
+        x.append(scaledWeight)
+
+    tag_frame['weight'] = x
 
     # When calling API, it would always bring the results in different orders
     # So, I sort the DF and save it as new DF, so it's always in same order
@@ -162,7 +162,6 @@ def getDBData(table, artist1, artist2, artist3, artist4, artist5):
 
 def Recommend(table, artist1, artist2, artist3, artist4, artist5):
     userFrame = Scale(table, artist1, artist2, artist3, artist4, artist5)
-    userFrame = userFrame[0:5]
     dbFrame = getDBData(table, artist1, artist2, artist3, artist4, artist5)
 
     # I strip all whitespace because character fields are set at length of 50

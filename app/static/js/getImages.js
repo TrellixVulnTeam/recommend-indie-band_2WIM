@@ -17,7 +17,7 @@ function getImages(final, i) {
         '&api_key=bd7e293a51b53716d502db4d74835f01' +
         '&format=json',
       success: function(data) {
-        $('.imgSlot' + i).html('<img class="img-circle" src="' + data.artist.image[2]['#text'] + '"/>')
+        $('#imgSlot' + i).append('<img class="img-circle" src="' + data.artist.image[2]['#text'] + '"/>')
       },
       error: function(code, message) {
         console.log('there was an error'+ message);

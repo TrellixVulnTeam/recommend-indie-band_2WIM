@@ -24,17 +24,25 @@
 	</div>
   <br/>
   <br/>
-  <p> This website utilizes <a href="www.last.fm">last.fm</a>, which is a music website conttaining a ton of data about artists.
+  <p> This website utilizes <a href="www.last.fm">last.fm</a>, which is a music website containing a bunch of data about artists.
     Each artist gets tags assigned to them by users of the site. Luckily, Last.fm
-    is nice enough to provide an API so developers like myself can get to the information.
+    is nice enough to provide an API so developers like myself access this information.
   </p>
   <br/>
   <p> This website takes the five artists you've given, gets their tags from Last.fm, then
-    does some calculations to find similar artists. This is not the same as Last.fm's similar artists feature. This is my own algorithm and should produce different results.
-		On the results page, the percentages indicate why the particular artist was chosen. For example, if you see 'shoegaze 100%',
-    then the scaled sum of your given artists and the results artist had the same level of shoegaze.
+    does some calculations to find similar artists. This is different than Last.fm's similar artists feature, and should provide different results.
+	</p>
+	<br/>
+	<h2> Interpreting your results </h2>
+	<p>
+		On the results page, the percentages indicate why the particular artist was chosen. A match of 100% means that your given artists and this particular artist shared the same amount of that tag.
+		Looking at the example on below, the band 'Explosions in the Sky' was chosen. They had a post-rock level of 100%, meaning that they had the same level of post-rock as your provided artists.
+		They also had an instrumental level of 83%, meaning that they are "83% as experimental" as your provided artists. If the band seems interesting, you can click on "Go to Artists' Page", where
+		you can read a short bio about the artist, find out what their most popular albums are, and listen to a few of their most popular songs.
   </p>
+	<img height=400 src="{{url_for('static', filename='images/example.PNG') }}"</img>
   <br/>
   <br/>
+	<p> If you have any inquiries about the website or want to suggest some features, feel free to reach out to me at <a href="mailto:recommendindiemusic@gmail.com">RecommendIndieMusic@gmail.com</a></p>
 </body>
 {% endblock %}

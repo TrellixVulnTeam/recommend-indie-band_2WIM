@@ -18,8 +18,25 @@ body{
     width:75%;
     text-align: middle;
 }
-#hiddenContent{
+.hiddenForm {
 
+}
+#hidden1 {
+
+}
+#hidden2 {
+	display: none;
+}
+#hidden3 {
+	display: none;
+}
+#hidden4 {
+	display: none;
+}
+#hidden5 {
+	display: none;
+}
+#hiddenContent{
 	display: none;
 }
 .pace {

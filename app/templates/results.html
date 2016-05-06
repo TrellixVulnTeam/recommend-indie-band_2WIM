@@ -26,41 +26,32 @@
 <div class="results" align=left>
   <h1 align=middle style="color: #3D514D"> Here are some bands we think you may enjoy: </h1>
 <br/><br/>
+<div class="postContainers">
 {% for artist in results %}
-<div class="artistSection">
-	<div class="imgSlot{{ loop.index }}"></div>
-	<div class="artistName">
-		<h1 class="artist">{{ artist[0] }}</h1>
-		<br/>
-		<p style="text-decoration: underline;"><a style="color: black" href="/artist/{{ artist[0] }}">Go to Artist's Page </a></p>
-	</div>
-			<div class="tags">
-				<p style="text-decoration: underline">These tags matched: </p>
+		<div align=middle class="panel">
+			<div class="panel-heading" id="imgSlot{{ loop.index }}"></div>
+			<h1 class="artist">{{ artist[0] }}</h1>
+					<p style="text-decoration: underline">Matching tags: </p>
+					{% if artist[1] != 0 %}
+						<p> {{ artist[6] }} {{ artist[1] }}%</p>
+					{% endif %}
+					{% if artist[2] != 0 %}
+						<p> {{ artist[7] }} {{ artist[2] }}%</p>
+					{% endif %}
+					{% if artist[3] != 0 %}
+						<p> {{ artist[8] }} {{ artist[3] }}%</p>
+					{% endif %}
+					{% if artist[4] != 0 %}
+						<p> {{ artist[9] }} {{ artist[4] }}%</p>
+					{% endif %}
+					{% if artist[5] != 0 %}
+						<p> {{ artist[10] }} {{ artist[5] }}%</p>
+					{% endif %}
 				<br/>
-				{% if artist[1] != 0 %}
-					<p> {{ artist[6] }} {{ artist[1] }}%</p>
-					<br/>
-				{% endif %}
-				{% if artist[2] != 0 %}
-					<p> {{ artist[7] }} {{ artist[2] }}%</p>
-					<br/>
-				{% endif %}
-				{% if artist[3] != 0 %}
-					<p> {{ artist[8] }} {{ artist[3] }}%</p>
-					<br/>
-				{% endif %}
-				{% if artist[4] != 0 %}
-					<p> {{ artist[9] }} {{ artist[4] }}%</p>
-					<br/>
-				{% endif %}
-				{% if artist[5] != 0 %}
-					<p> {{ artist[10] }} {{ artist[5] }}%</p>
-				{% endif %}
+					<p style="text-decoration: underline;"><a style="color: black" href="/artist/{{ artist[0] }}">Go to Artist's Page </a></p>
 		</div>
-</div>
-<br/>
-<br/>
 {% endfor %}
+</div>
 <br/>
 <h4 align=middle><a href="/"> Try searching again with some of your other favorite bands.</a></h4>
 <h4 align=middle><a href="/small"> Or try searching only small bands.</a></h4>

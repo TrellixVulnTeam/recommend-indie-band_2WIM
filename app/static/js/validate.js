@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $("#showImage").on("click", function() {
+  $("#firstButton").on("click", function() {
     artists = []
     var artist1 = $("#artist1").val();
     artists.push(artist1);
@@ -11,13 +11,14 @@ $(document).ready(function() {
     artists.push(artist4);
     var artist5 = $("#artist5").val();
     artists.push(artist5);
+
     i = 1;
+    fixedArtists = []
     artists.forEach(function(artist) {
       console.log(artist);
       validate(artist, i);
       i++;
     })
-  });
 
   function validate(artist, i){
     $.ajax({
@@ -29,11 +30,20 @@ $(document).ready(function() {
         '&api_key=bd7e293a51b53716d502db4d74835f01' +
         '&format=json',
       success: function(data) {
-        $('#artist'+i).val(data.artist.name);
+        var fixedArtist = data.artist.name;
+        console.log(fixedArtist);
+        $('#artist'+i).val(fixedArtist);
+        $('#hidden'+i).val(fixedArtist);
+        if (i == 5) {
+          $('#secondButton').click();
+          console.log('button clicked');
+        }
       },
       error: function(code, message) {
-        console.log('there was an error'+ message);
+        console.log('Error: ', message);
+        $('#artist'+i).val();
       }
     });
   }
+});
 });
