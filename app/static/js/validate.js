@@ -17,7 +17,9 @@ $("#secondButton").on("click", function(e) {
   fixedArtists = []
   artists.forEach(function(artist) {
     if (artist == undefined) {
+      delete window.alert;
       alert('Please be sure to enter an artist for each field.');
+      return false;
     };
     validate(artist, i);
     i++;
