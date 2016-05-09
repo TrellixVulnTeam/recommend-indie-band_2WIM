@@ -23,6 +23,22 @@
 	<p> Interested in small bands only? <a href="/small"> Go here to filter by smaller bands!</a></p>
 </div>
 <div class="container center_div" align=middle>
+<form>
+	<div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-xs-12" align=middle>
+	<h4>Artist 1</h4>
+	<input type="text" class="form-control" id="artist1" required>
+	<h4>Artist 2</h4>
+	<input type="text" class="form-control" id="artist2" required>
+	<h4>Artist 3</h4>
+	<input type="text" class="form-control" id="artist3" required>
+	<h4>Artist 4</h4>
+	<input type="text" class="form-control" id="artist4" required>
+	<h4>Artist 5</h4>
+	<input type="text" class="form-control" id="artist5" required>
+	<br/>
+	<button id="secondButton" type="button" class="btn btn-default">Go</button>
+</div>
+</form>
 {% from "_formhelpers.html" import render_field %}
 	<form method="Post" action="/results" id="myForm">
 		{{ form.hidden_tag() }}
@@ -30,19 +46,13 @@
 		<p class=error><strong>Error:</strong> {{ error }}
   {% endif %}
 	<div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-xs-12" align=middle>
-
-		{{ render_field(form.artist1, class="form-control", id="artist1") }}
-
-		{{ render_field(form.artist2, class="form-control", id="artist2") }}
-
-		{{ render_field(form.artist3, class="form-control", id="artist3") }}
-
-		{{ render_field(form.artist4, class="form-control", id="artist4")}}
-
-		{{ render_field(form.artist5, class="form-control", id="artist5")}}
-
+		{{ render_field(form.artist1, class="form-control", id="hidden1") }}
+		{{ render_field(form.artist2, class="form-control", id="hidden2") }}
+		{{ render_field(form.artist3, class="form-control", id="hidden3") }}
+		{{ render_field(form.artist4, class="form-control", id="hidden4") }}
+		{{ render_field(form.artist5, class="form-control", id="hidden5") }}
 	<br/>
-	<p><input id="firstButton" type=submit value=Go type="button" class="btn btn-default"></p>
+	<input id="firstButton" type="submit" value="Go" type="button" class="btn btn-default">
 	</div>
 </form>
  </div>
