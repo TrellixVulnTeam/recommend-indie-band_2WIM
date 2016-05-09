@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	$("#showImage").on("click", function () {
+	$("#firstButton").on("click", function () {
 		$("#mainContent").hide();
       $("#hiddenContent").show();
      })
