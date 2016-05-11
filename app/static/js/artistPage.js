@@ -102,13 +102,17 @@ function init() {
     var songName1 = $('.topTracks1').html().replace(/\s+/g, '+');
     var songName2 = $('.topTracks2').html().replace(/\s+/g, '+');
     var songName3 = $('.topTracks3').html().replace(/\s+/g, '+');
+
     var arr = [songName1, songName2, songName3];
     var artistName = $('#artistName').html().replace(/\s+/g, '+');
     i = 1;
     $.each(arr, function(i, val) {
       i++;
-      var myRequest = artistName + '+' + $(val).html();
-      makeRequest(myRequest, i);
+      if (!val){
+      } else {
+        var myRequest = artistName + '+' + $(val).html();
+        makeRequest(myRequest, i);
+      }
     })
   });
 }
