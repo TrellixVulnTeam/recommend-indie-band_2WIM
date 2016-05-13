@@ -19,7 +19,7 @@
 <body class="mainContent">
 <div class="jumbotron" align="middle">
   <h1>Indie Band Recommender</h1>
-  <p> Enter in your 5 favorite bands (of any size or genre) and we'll recommend 25 indie bands you may also enjoy.</p>
+  <p> Enter at least one favorite bands (of any size or genre) and we'll recommend 25 indie bands you may also enjoy.</p>
 	<p> Interested in small bands only? <a href="/small"> Go here to filter by smaller bands!</a></p>
 </div>
 <div class="container center_div" align=middle>
@@ -35,6 +35,31 @@
 	<input type="text" class="form-control" id="artist4" required>
 	<h4>Artist 5</h4>
 	<input type="text" class="form-control" id="artist5" required>
+	<div id="hid6">
+		<h4>Artist 6</h4>
+		<input type="text" class="form-control" id="artist6">
+	</div>
+	<div id="hid7">
+		<h4>Artist 7</h4>
+		<input type="text" class="form-control" id="artist7">
+	</div>
+	<div id="hid8">
+		<h4>Artist 8</h4>
+		<input type="text" class="form-control" id="artist8">
+	</div>
+	<div id="hid9">
+		<h4>Artist 9</h4>
+		<input type="text" class="form-control" id="artist9">
+	</div>
+	<div id="hid10">
+		<h4>Artist 10</h4>
+		<input type="text" class="form-control" id="artist10">
+	</div>
+	<br/>
+	<button type="button" class="btn btn-default" id="addArtist">
+		<span class="glyphicon glyphicon-plus"></span> Add Artist
+	</button>
+	<br/>
 	<br/>
 	<button id="secondButton" type="button" class="btn btn-default">Go</button>
 </div>
@@ -45,12 +70,17 @@
 		{% if error %}
 		<p class=error><strong>Error:</strong> {{ error }}
   {% endif %}
-	<div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-xs-12" align=middle>
+	<div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-xs-12" align=middle id="hiddenForm">
 		{{ render_field(form.artist1, class="form-control", id="hidden1") }}
 		{{ render_field(form.artist2, class="form-control", id="hidden2") }}
 		{{ render_field(form.artist3, class="form-control", id="hidden3") }}
 		{{ render_field(form.artist4, class="form-control", id="hidden4") }}
 		{{ render_field(form.artist5, class="form-control", id="hidden5") }}
+		{{ render_field(form.artist6, class="form-control", id="hidden6") }}
+		{{ render_field(form.artist7, class="form-control", id="hidden7") }}
+		{{ render_field(form.artist8, class="form-control", id="hidden8") }}
+		{{ render_field(form.artist9, class="form-control", id="hidden9") }}
+		{{ render_field(form.artist10, class="form-control", id="hidden10") }}
 	<br/>
 	<input id="firstButton" type="submit" value="Go" type="button" class="btn btn-default">
 	</div>

@@ -22,6 +22,24 @@ body{
     width:75%;
     text-align: middle;
 }
+#hiddenForm {
+	display: none;
+}
+#hid6 {
+	display: none;
+}
+#hid7 {
+	display: none;
+}
+#hid8 {
+	display: none;
+}
+#hid9 {
+	display: none;
+}
+#hid10 {
+	display: none;
+}
 #firstButton {
 	display: none;
 }
@@ -38,6 +56,21 @@ body{
 	display: none;
 }
 #hidden5 {
+	display: none;
+}
+#hidden6 {
+	display: none;
+}
+#hidden7 {
+	display: none;
+}
+#hidden8 {
+	display: none;
+}
+#hidden9 {
+	display: none;
+}
+#hidden10 {
 	display: none;
 }
 #hiddenContent{

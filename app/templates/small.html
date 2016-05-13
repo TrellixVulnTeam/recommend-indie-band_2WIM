@@ -25,42 +25,72 @@
 <body class="mainContent">
 <div class="jumbotron" align="middle">
   <h1>Small Indie Band Recommender</h1>
-  <p> Enter in your 5 favorite bands (of any size or genre) and we'll recommend 25 small indie bands you may also enjoy.</p>
+  <p> Enter at least one of your favorite bands (of any size or genre) and we'll recommend 25 small indie bands you may also enjoy.</p>
 	<p> Interested in all sized bands? <a href="/"> Go here!</a></p>
 </div>
 <div class="container center_div" align=middle>
-<form>
-	<div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-xs-12" align=middle>
-	<h4>Artist 1</h4>
-	<input type="text" class="form-control" id="artist1" required>
-	<h4>Artist 2</h4>
-	<input type="text" class="form-control" id="artist2" required>
-	<h4>Artist 3</h4>
-	<input type="text" class="form-control" id="artist3" required>
-	<h4>Artist 4</h4>
-	<input type="text" class="form-control" id="artist4" required>
-	<h4>Artist 5</h4>
-	<input type="text" class="form-control" id="artist5" required>
-	<br/>
-	<button id="secondButton" type="button" class="btn btn-default">Go</button>
-</div>
-</form>
-{% from "_formhelpers.html" import render_field %}
-	<form method="Post" action="/small_results" id="myForm">
-		{{ smallForm.hidden_tag() }}
-		{% if error %}
-		<p class=error><strong>Error:</strong> {{ error }}
-  {% endif %}
-	<div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-xs-12" align=middle>
-		{{ render_field(smallForm.artist1, class="form-control", id="hidden1") }}
-		{{ render_field(smallForm.artist2, class="form-control", id="hidden2") }}
-		{{ render_field(smallForm.artist3, class="form-control", id="hidden3") }}
-		{{ render_field(smallForm.artist4, class="form-control", id="hidden4") }}
-		{{ render_field(smallForm.artist5, class="form-control", id="hidden5") }}
-	<br/>
-	<input id="firstButton" type="submit" value="Go" type="button" class="btn btn-default">
+	<form>
+		<div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-xs-12" align=middle>
+		<h4>Artist 1</h4>
+		<input type="text" class="form-control" id="artist1" required>
+		<h4>Artist 2</h4>
+		<input type="text" class="form-control" id="artist2" required>
+		<h4>Artist 3</h4>
+		<input type="text" class="form-control" id="artist3" required>
+		<h4>Artist 4</h4>
+		<input type="text" class="form-control" id="artist4" required>
+		<h4>Artist 5</h4>
+		<input type="text" class="form-control" id="artist5" required>
+		<div id="hid6">
+			<h4>Artist 6</h4>
+			<input type="text" class="form-control" id="artist6">
+		</div>
+		<div id="hid7">
+			<h4>Artist 7</h4>
+			<input type="text" class="form-control" id="artist7">
+		</div>
+		<div id="hid8">
+			<h4>Artist 8</h4>
+			<input type="text" class="form-control" id="artist8">
+		</div>
+		<div id="hid9">
+			<h4>Artist 9</h4>
+			<input type="text" class="form-control" id="artist9">
+		</div>
+		<div id="hid10">
+			<h4>Artist 10</h4>
+			<input type="text" class="form-control" id="artist10">
+		</div>
+		<br/>
+		<button type="button" class="btn btn-default" id="addArtist">
+			<span class="glyphicon glyphicon-plus"></span> Add Artist
+		</button>
+		<br/>
+		<br/>
+		<button id="secondButton" type="button" class="btn btn-default">Go</button>
 	</div>
-</form>
+	</form>
+	{% from "_formhelpers.html" import render_field %}
+		<form method="Post" action="/small_results" id="myForm">
+			{{ smallForm.hidden_tag() }}
+			{% if error %}
+			<p class=error><strong>Error:</strong> {{ error }}
+	  {% endif %}
+		<div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-xs-12" align=middle id="hiddenForm">
+			{{ render_field(smallForm.artist1, class="form-control", id="hidden1") }}
+			{{ render_field(smallForm.artist2, class="form-control", id="hidden2") }}
+			{{ render_field(smallForm.artist3, class="form-control", id="hidden3") }}
+			{{ render_field(smallForm.artist4, class="form-control", id="hidden4") }}
+			{{ render_field(smallForm.artist5, class="form-control", id="hidden5") }}
+			{{ render_field(smallForm.artist6, class="form-control", id="hidden6") }}
+			{{ render_field(smallForm.artist7, class="form-control", id="hidden7") }}
+			{{ render_field(smallForm.artist8, class="form-control", id="hidden8") }}
+			{{ render_field(smallForm.artist9, class="form-control", id="hidden9") }}
+			{{ render_field(smallForm.artist10, class="form-control", id="hidden10") }}
+		<br/>
+		<input id="firstButton" type="submit" value="Go" type="button" class="btn btn-default">
+		</div>
+	</form>
  </div>
  <br/>
  <br/>

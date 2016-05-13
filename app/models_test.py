@@ -2,36 +2,21 @@ import pylast
 import pandas as pd
 import numpy as np
 import psycopg2
-import datetime
-import config
 
 
 def Connect():
-    network = pylast.LastFMNetwork(api_key=config.API_KEY,
-                                   api_secret=config.API_SECRET,
-                                   username=config.username,
-                                   password_hash=config.password_hash)
+    network = pylast.LastFMNetwork(api_key="bd7e293a51b53716d502db4d74835f01",
+                                   api_secret="b11413d5d68dad40029e06d1d33f753f",
+                                   username="dschuler36",
+                                   password_hash=pylast.md5("s002443"))
 
     return network
 
 
 def dbCon():
-    con = psycopg2.connect(host=config.host, database=config.dbname,
-                           user=config.user, password=config.password)
+    con = psycopg2.connect(host='ec2-54-197-230-161.compute-1.amazonaws.com', database='d2m84f7bec17sh',
+                           user='hlakkzlawtveie', password='BH4t1gKK7hcCeyE8pG8_tnV9S0')
     return con
-
-
-def insertData(searchType, artist1, artist2, artist3, artist4, artist5):
-    curTime = datetime.datetime.now()
-    con = dbCon()
-    cur = con.cursor()
-    cur.execute('INSERT INTO usersearch (curtime, searchType, artist1, artist2, \
-                artist3, artist4, artist5) VALUES (%s, %s, %s, %s, %s, %s, \
-                %s)', (curTime, searchType, artist1, artist2, artist3, artist4,
-                       artist5))
-    con.commit()
-    cur.close()
-    con.close()
 
 
 def getData(table):

@@ -5,27 +5,28 @@ $(document).ready(function() {
   $("#secondButton").on("click", function(e) {
 
     artists = []
-    var artist1 = $("#artist1").val();
-    artists.push(artist1);
-    var artist2 = $("#artist2").val();
-    artists.push(artist2);
-    var artist3 = $("#artist3").val();
-    artists.push(artist3);
-    var artist4 = $("#artist4").val();
-    artists.push(artist4);
-    var artist5 = $("#artist5").val();
-    artists.push(artist5);
+    var j = 1;
+    while (j <= 10) {
+      var art = $('#artist'+j).val();
+      if (!art){
+      } else {
+        artists.push(art);
+      }
+      j++;
+    };
+
+    if (artists.length < 1) {
+      console.log('no artists entered');
+      alert("Please enter at least one artist.")
+    }
 
     i = 1;
     fixedArtists = []
     artists.forEach(function(artist) {
-      if (!artist) {
-        alert("Please enter an artist for field " + i);
-        return false;
-      };
       validate(artist, i);
       i++;
     });
+
 
     function validate(artist, i){
       $.ajax({
@@ -41,7 +42,7 @@ $(document).ready(function() {
           var fixedArtist = data.artist.name;
           $('#hidden'+i).val(fixedArtist);
           $('#artist'+i).val(fixedArtist);
-          if (i == 5) {
+          if (i >= 1) {
             $('#firstButton').click();
           }
         },
@@ -51,7 +52,5 @@ $(document).ready(function() {
         }
       });
     };
-
   });
-
 })
