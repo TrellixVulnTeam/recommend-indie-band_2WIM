@@ -4,7 +4,7 @@ import json
 
 from app import app
 from .models import getArtists, insertData
-from .forms import ArtistsForm
+from .forms import ArtistsForm, FestivalForm
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -45,7 +45,7 @@ def small():
     return render_template('small.html', smallForm=smallForm)
 
 
-@app.route('/small_results', methods=['GET', 'POST'])
+@app.route('/small/small_results', methods=['GET', 'POST'])
 def smallResults():
     smallForm = ArtistsForm()
     error = None
@@ -74,6 +74,42 @@ def smallResults():
 @app.route('/artist/<artist>')
 def artistPage(artist):
     return render_template('artistPage.html', artist=artist)
+
+
+@app.route('/festivals')
+def festivals():
+    festForm = FestivalForm()
+    artistsForm = ArtistsForm()
+    return render_template('festival.html', festForm=festForm,
+                           artistsForm=artistsForm)
+
+
+@app.route('/festivals/results', methods=['GET', 'POST'])
+def festivalsResults():
+        festForm = FestivalForm()
+        error = None
+        try:
+            if request.method == 'POST':
+
+                table = festForm.selectFest.data
+
+                artists = []
+                for value in festForm.data.items():
+                    if (value[1] is not ''):
+                        if value[1] is not table:
+                            artists.append(value[1])
+                            print(value[1])
+
+                festResults = getArtists(table, *artists).values.tolist()
+                return render_template('festivalResults.html',
+                                       festResults=festResults)
+            else:
+                error = "Please be sure to enter 5 artists with correct" \
+                        " spelling and punctuation"
+
+        except pylast.WSError:
+            return render_template('error.html')
+        return render_template('festival.html', festForm=festForm, error=error)
 
 
 @app.route('/how_it_works')

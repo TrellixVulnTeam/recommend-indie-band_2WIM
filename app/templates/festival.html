@@ -1,0 +1,128 @@
+<html lang="en">
+{% extends 'header.html' %}
+	<head>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css')}}">
+		<link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	    <link href="/static/css/bootstrap-responsive.min.css" rel="stylesheet">
+	    <script src="http://code.jquery.com/jquery-latest.js"></script>
+	    <script src="/static/js/bootstrap.min.js"></script>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	{% block scripts %}
+	{{super()}}
+		<script type="text/javascript" src="{{url_for('static', filename='js/pace.min.js') }}"></script>
+		<script type="text/javascript" src="{{url_for('static', filename='js/ga.js') }}"></script>
+		<script type="text/javascript" src="{{url_for('static', filename='js/chooseFestival.js') }}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/homeButton.js') }}"></script>
+	{% endblock %}
+	{% block styles %}
+    {{super()}}
+      <link rel="stylesheet" href="{{url_for('.static', filename='css/festival.css')}}">
+			<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+  	{% endblock %}
+	</head>
+
+{% block content %}
+<body class="mainContent">
+<div class="jumbotron" align="middle">
+  <h1>Festival Band Recommender</h1>
+  <h3>Know who's playing at your festival!</h3>
+  <p> To start, choose your festival below. Then, enter at least one of your favorite bands and
+  we'll recommend 25 other bands you would enjoy at that festival.</p>
+</div>
+
+<div class="container center_div" align=middle>
+  {% from "_formhelpers.html" import render_field %}
+    <form method="Post" action="/festivals/results" id="myForm">
+      {{ festForm.hidden_tag() }}
+      {% if error %}
+      <p class=error><strong>Error:</strong> {{ error }}
+    {% endif %}
+    <h3 align=middle>{{ festForm.selectFest.label }}</h3>
+        <p align=middle>{{ festForm.selectFest }}</p>
+    <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-xs-12" align=middle id="hiddenForm">
+      {{ render_field(festForm.artist1, class="form-control", id="hidden1") }}
+      {{ render_field(festForm.artist2, class="form-control", id="hidden2") }}
+      {{ render_field(festForm.artist3, class="form-control", id="hidden3") }}
+      {{ render_field(festForm.artist4, class="form-control", id="hidden4") }}
+      {{ render_field(festForm.artist5, class="form-control", id="hidden5") }}
+      {{ render_field(festForm.artist6, class="form-control", id="hidden6") }}
+      {{ render_field(festForm.artist7, class="form-control", id="hidden7") }}
+      {{ render_field(festForm.artist8, class="form-control", id="hidden8") }}
+      {{ render_field(festForm.artist9, class="form-control", id="hidden9") }}
+      {{ render_field(festForm.artist10, class="form-control", id="hidden10") }}
+    <input id="firstButton" type="submit" value="Go" type="button" class="btn btn-default">
+    </div>
+  <form>
+  	<div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-xs-12" align=middle>
+    <br/>
+  	<h4>Artist 1</h4>
+  	<input type="text" class="form-control" id="artist1">
+  	<h4>Artist 2</h4>
+  	<input type="text" class="form-control" id="artist2">
+  	<h4>Artist 3</h4>
+  	<input type="text" class="form-control" id="artist3">
+  	<h4>Artist 4</h4>
+  	<input type="text" class="form-control" id="artist4">
+  	<h4>Artist 5</h4>
+  	<input type="text" class="form-control" id="artist5">
+  	<div id="hid6">
+  		<h4>Artist 6</h4>
+  		<input type="text" class="form-control" id="artist6">
+  	</div>
+  	<div id="hid7">
+  		<h4>Artist 7</h4>
+  		<input type="text" class="form-control" id="artist7">
+  	</div>
+  	<div id="hid8">
+  		<h4>Artist 8</h4>
+  		<input type="text" class="form-control" id="artist8">
+  	</div>
+  	<div id="hid9">
+  		<h4>Artist 9</h4>
+  		<input type="text" class="form-control" id="artist9">
+  	</div>
+  	<div id="hid10">
+  		<h4>Artist 10</h4>
+  		<input type="text" class="form-control" id="artist10">
+  	</div>
+  	<br/>
+  	<button type="button" class="btn btn-default" id="addArtist">
+  		<span class="glyphicon glyphicon-plus"></span> Add Artist
+  	</button>
+  	<br/>
+  	<br/>
+  	<button id="secondButton" type="button" class="btn btn-default">Go</button>
+  </div>
+  </form>
+
+  </form>
+</div><br/>
+<br/>
+<br/>
+<div align="middle">
+ <p>Powered by: </p>
+ <img src="{{ url_for('static', filename='images/lastfm_grey.gif') }}" height=50;>
+</div>
+</body>
+
+<div id="hiddenContent">
+ <br/>
+ <h3 align="middle"> Please wait while we load your recommendations. This may take a minute.</h3>
+</div>
+<br/>
+<br/>
+<div id="donate" align=middle>
+ <p> Servers are expensive. If this website helped you find a new
+   band you enjoy, I'd really appreciate if you threw few bones my way
+   to help pay for my monthly hosting costs.</p>
+ <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+ <input type="hidden" name="cmd" value="_s-xclick">
+ <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+ ">
+ <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+ <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+ </form>
+</div>
+
+{% endblock %}
+</html>

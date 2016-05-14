@@ -71,7 +71,7 @@
 	</div>
 	</form>
 	{% from "_formhelpers.html" import render_field %}
-		<form method="Post" action="/small_results" id="myForm">
+		<form method="Post" action="/small/small_results" id="myForm">
 			{{ smallForm.hidden_tag() }}
 			{% if error %}
 			<p class=error><strong>Error:</strong> {{ error }}
@@ -106,12 +106,6 @@
  	<br/>
  	<br/>
  	<h3 align="middle"> Please wait while we load your recommendations. This may take a minute.</h3>
-		{% for tag in tags %}
-		  <li><h3 align=left>{{ tag }}</h3></li>
-		{% endfor %}
-		{% for weight in weights %}
-		  <li><h3 align=middle>{{ weight }}%</h3></li>
-		{% endfor %}
 </div>
 <br/>
 <br/>
