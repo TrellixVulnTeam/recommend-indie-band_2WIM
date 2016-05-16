@@ -102,7 +102,7 @@ def festivalsResults():
 
                 festResults = getArtists(table, *artists).values.tolist()
                 return render_template('festivalResults.html',
-                                       festResults=festResults)
+                                       festResults=festResults, festival=table)
             else:
                 error = "Please be sure to enter 5 artists with correct" \
                         " spelling and punctuation"

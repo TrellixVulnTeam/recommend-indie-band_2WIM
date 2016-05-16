@@ -212,58 +212,6 @@ def Recommend(table, *artists):
         if len(dif5) < j:
             dif5.append(0)
 
-        '''
-        if i == 1:
-            # Since these will all be executed once, I just added
-            # the artist name in the first block
-            artistDf.append(dbFrame['artist'][j])
-            tag1.append(dbFrame['tag1'][j])
-            if userFrame['tag'][i] == dbFrame['tag1'][j]:
-                thisDif = (abs(int(userFrame['weight'][i] -
-                                   int(dbFrame['weight1'][j]))))
-                thisDif = abs(thisDif - 100)
-                dif1.append(thisDif)
-            else:
-                dif1.append(0)
-        if i == 2:
-            tag2.append(dbFrame['tag2'][j])
-            if userFrame['tag'][i] == dbFrame['tag2'][j]:
-                thisDif = (abs(int(userFrame['weight'][i] -
-                                   int(dbFrame['weight2'][j]))))
-                thisDif = abs(thisDif - 100)
-                dif2.append(thisDif)
-            else:
-                dif2.append(0)
-        if i == 3:
-            tag3.append(dbFrame['tag3'][j])
-            if userFrame['tag'][i] == dbFrame['tag3'][j]:
-                thisDif = (abs(int(userFrame['weight'][i] -
-                                   int(dbFrame['weight3'][j]))))
-                thisDif = abs(thisDif - 100)
-                dif3.append(thisDif)
-            else:
-                dif3.append(0)
-        if i == 4:
-            tag4.append(dbFrame['tag4'][j])
-            if userFrame['tag'][i] == dbFrame['tag4'][j]:
-                thisDif = (abs(int(userFrame['weight'][i] -
-                                   int(dbFrame['weight4'][j]))))
-                thisDif = abs(thisDif - 100)
-                dif4.append(thisDif)
-            else:
-                dif4.append(0)
-        if i == 5:
-            tag5.append(dbFrame['tag5'][j])
-            if userFrame['tag'][i] == dbFrame['tag5'][j]:
-                thisDif = (abs(int(userFrame['weight'][i] -
-                                   int(dbFrame['weight5'][j]))))
-                thisDif = abs(thisDif - 100)
-                dif5.append(thisDif)
-            else:
-                dif5.append(0)
-        '''
-
-    print(len(artistDf), len(tag1), len(dif1), len(tag2), len(dif2), len(dif3), len(dif4), len(dif5))
     tagDisplay = pd.DataFrame({'artist': artistDf,
                                'tag1': tag1,
                                'dif1': dif1,
@@ -291,7 +239,7 @@ def getArtists(table, *artists):
     # add together weights for tags
     totalDif = [dif1[k] + dif2[k] + dif3[k] + dif4[k] +
                 dif5[k] for k in range(len(dif1))]
-    print(totalDif)
+
     # put the differences in a data frame and sort it
     d2 = {'weights': totalDif}
     totalDF = pd.DataFrame(d2)

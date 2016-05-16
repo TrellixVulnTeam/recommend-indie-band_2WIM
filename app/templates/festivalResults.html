@@ -24,7 +24,8 @@
 
 {% block content %}
 <div class="results" align=left>
-  <h1 align=middle style="color: #1B0F06"> Here are some bands we think you may enjoy: </h1>
+	<h1 align=middle style="color: #1B0F06">{{ festival }} Recommendations</h1>
+  <h2 align=middle style="color: #1B0F06"> Here are some bands playing at {{ festival }} we think you may enjoy: </h2>
 <br/><br/>
 <div class="postContainers">
 {% for artist in festResults %}
