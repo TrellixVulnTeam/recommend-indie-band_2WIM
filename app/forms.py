@@ -30,5 +30,6 @@ class FestivalForm(Form):
     selectFest = SelectField("Select Festival: ",
                              choices=[('Bonnaroo', 'Bonnaroo'),
                                       ('Forecastle', 'Forecastle'),
+                                      ("govball", "Governor's Ball"),
                                       ('Lollapalooza', 'Lollapalooza'),
                                       ('Pitchfork', 'Pitchfork')])

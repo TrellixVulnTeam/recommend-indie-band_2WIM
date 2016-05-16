@@ -1,6 +1,5 @@
 from flask import render_template, request
 import pylast
-import json
 
 from app import app
 from .models import getArtists, insertData
@@ -92,6 +91,7 @@ def festivalsResults():
             if request.method == 'POST':
 
                 table = festForm.selectFest.data
+                print(table)
 
                 artists = []
                 for value in festForm.data.items():
@@ -101,8 +101,15 @@ def festivalsResults():
                             print(value[1])
 
                 festResults = getArtists(table, *artists).values.tolist()
+
+                if table == 'govball':
+                    festival = "Governor's Ball"
+                else:
+                    festival = table
+
                 return render_template('festivalResults.html',
-                                       festResults=festResults, festival=table)
+                                       festResults=festResults,
+                                       festival=festival)
             else:
                 error = "Please be sure to enter 5 artists with correct" \
                         " spelling and punctuation"
