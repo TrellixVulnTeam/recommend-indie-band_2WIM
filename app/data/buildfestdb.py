@@ -1,7 +1,38 @@
 import pylast
 import psycopg2
 
-artists = ['Låpsley', 'Marlan Hill', 'Halsey', 'Flume', 'LCD Soundsystem']
+artists = [
+            'Teddy Abrams',
+            'Sarah Jarosz',
+            'All Them Witches',
+            'Banners',
+            'Nothing',
+            'Madisen Ward & The Mama Bear',
+            'Alex G',
+            'Jazz Cartier',
+            'Future Thieves',
+            'Myzica',
+            'The Shadowboxers',
+            'Death Cab For Cutie',
+            'Ryan Adams',
+            'Brandi Carlile',
+            'Gary Clark Jr.',
+            'Blackberry Smoke',
+            'Washed Out',
+            'Femi Kuti & Positive Force',
+            'Unknown Mortal Orchestra',
+            'AlunaGeorge',
+            'White Denim',
+            'Heartless Bastards',
+            'Patrick Watson',
+            'Speedy Ortiz',
+            'Anderson East',
+            'Steve Gunn',
+            'The Suffers',
+            'Saintseneca',
+            'Los Colognes',
+            'River Tiber',
+            'Joan Shelley']
 
 network = pylast.LastFMNetwork(api_key="bd7e293a51b53716d502db4d74835f01",
                                api_secret="b11413d5d68dad40029e06d1d33f753f",
@@ -38,7 +69,7 @@ for artist in artists:
         try:
             # Insert it into the DB
             cur.executemany(
-				'INSERT INTO "lollapalooza"(artist,tag1,weight1,tag2,weight2, \
+				'INSERT INTO "forecastle"(artist,tag1,weight1,tag2,weight2, \
                 tag3,weight3,tag4,weight4,tag5,weight5) \
                 VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)', (k,))
             print('insert successful')

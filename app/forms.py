@@ -29,5 +29,6 @@ class FestivalForm(Form):
     artist10 = TextField()
     selectFest = SelectField("Select Festival: ",
                              choices=[('Bonnaroo', 'Bonnaroo'),
+                                      ('Forecastle', 'Forecastle'),
                                       ('Lollapalooza', 'Lollapalooza'),
                                       ('Pitchfork', 'Pitchfork')])
