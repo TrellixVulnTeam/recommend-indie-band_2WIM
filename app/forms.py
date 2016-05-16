@@ -32,4 +32,5 @@ class FestivalForm(Form):
                                       ('Forecastle', 'Forecastle'),
                                       ("govball", "Governor's Ball"),
                                       ('Lollapalooza', 'Lollapalooza'),
+                                      ('Panorama', 'Panorama'),
                                       ('Pitchfork', 'Pitchfork')])
