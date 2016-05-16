@@ -2,8 +2,9 @@ from flask import render_template, request
 import pylast
 
 from app import app
-from .models import getArtists, insertData
+from .models import getArtists
 from .forms import ArtistsForm, FestivalForm
+from .tasks import recommend
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -27,7 +28,7 @@ def results():
                     artists.append(value[1])
 
             #insertData(searchType, artist1, artist2, artist3, artist4, artist5)
-            results = getArtists(table, *artists).values.tolist()
+            results = recommend(table, *artists).values.tolist()
             return render_template('results.html', results=results)
         else:
             error = "Please be sure to enter 5 artists with correct spelling" \
@@ -58,7 +59,7 @@ def smallResults():
                 if (value[1] is not ''):
                     artists.append(value[1])
 
-            smallResults = getArtists(table, *artists).values.tolist()
+            smallResults = recommend(table, *artists).values.tolist()
             return render_template('smallResults.html',
                                    smallResults=smallResults)
         else:
@@ -99,7 +100,7 @@ def festivalsResults():
                             artists.append(value[1])
                             print(value[1])
 
-                festResults = getArtists(table, *artists).values.tolist()
+                festResults = recommend(table, *artists).values.tolist()
 
                 if table == 'govball':
                     festival = "Governor's Ball"
