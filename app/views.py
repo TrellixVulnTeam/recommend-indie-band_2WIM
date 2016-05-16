@@ -58,7 +58,6 @@ def smallResults():
                 if (value[1] is not ''):
                     artists.append(value[1])
 
-            #insertData(searchType, artist1, artist2, artist3, artist4, artist5)
             smallResults = getArtists(table, *artists).values.tolist()
             return render_template('smallResults.html',
                                    smallResults=smallResults)
