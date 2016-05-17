@@ -1,5 +1,6 @@
 from flask import render_template, request
 import pylast
+import celery
 
 from app import app
 from .models import getArtists
@@ -60,7 +61,10 @@ def smallResults():
                 if (value[1] is not ''):
                     artists.append(value[1])
 
-            smallResults = recommend(table, *artists).delay().values.tolist()
+            smallResults = recommend.delay(table, *artists)
+            smallResults = smallResults.result
+            print(smallResults)
+            #smallResults.values.tolist()
             return render_template('smallResults.html',
                                    smallResults=smallResults)
         else:
