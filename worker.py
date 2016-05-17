@@ -1,16 +1,16 @@
 import os
-from urllib.parse import urlparse
-from redis import Redis
+import redis
 from rq import Worker, Queue, Connection
 
 listen = ['high', 'default', 'low']
 
-redis_url = os.getenv('REDISTOGO_URL')
+redis_url = os.getenv('REDISTOGO_URL',
+                      'redis://redistogo:61f64edfbf63e3009926b41556e83aee@catfish.redistogo.com:10342/')
+print(redis_url)
 if not redis_url:
     raise RuntimeError('Set up Redis to go first.')
 
-url = urlparse(redis_url)
-conn = Redis(host=url.hostname, port=url.port, db=0, password=url.password)
+conn = redis.from_url(redis_url)
 
 if __name__=='__main__':
     with Connection(conn):
