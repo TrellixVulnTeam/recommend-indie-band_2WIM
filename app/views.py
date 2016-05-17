@@ -59,7 +59,7 @@ def smallResults():
                 if (value[1] is not ''):
                     artists.append(value[1])
 
-            smallResults = recommend(table, *artists).values.tolist()
+            smallResults = recommend(table, *artists).delay().values.tolist()
             return render_template('smallResults.html',
                                    smallResults=smallResults)
         else:
@@ -100,7 +100,7 @@ def festivalsResults():
                             artists.append(value[1])
                             print(value[1])
 
-                festResults = recommend(table, *artists).delay().values.tolist()
+                festResults = recommend(table, *artists).values.tolist()
 
                 if table == 'govball':
                     festival = "Governor's Ball"
