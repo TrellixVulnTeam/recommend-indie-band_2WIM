@@ -3,18 +3,18 @@ import pylast
 from rq import Queue
 import redis
 from worker import conn
-
+import time
 
 from app import app
 from .models import getArtists
 from .forms import ArtistsForm, FestivalForm
 
+q = Queue(connection=conn)
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
     form = ArtistsForm()
-    return render_template('construction.html')
-    #return render_template('home.html', form=form)
+    return render_template('home.html', form=form)
 
 
 @app.route('/results', methods=['GET', 'POST'])
@@ -24,15 +24,17 @@ def results():
     try:
         if request.method == 'POST' and form.validate():
             table = 'Artists'
-            searchType = 'normal'
-
             artists = []
             for value in form.data.items():
                 if (value[1] is not ''):
                     artists.append(value[1])
 
-            #insertData(searchType, artist1, artist2, artist3, artist4, artist5)
-            results = recommend(table, *artists).values.tolist()
+            results = q.enqueue_call(func=getArtists, args=(table, *artists))
+            while results.result is None:
+                time.sleep(1)
+                print('loading')
+            results = results.result.values.tolist()
+
             return render_template('results.html', results=results)
         else:
             error = "Please be sure to enter 5 artists with correct spelling" \
@@ -56,21 +58,19 @@ def smallResults():
     try:
         if request.method == 'POST' and smallForm.validate():
             table = 'artistsSmall'
-            searchType = 'small'
-
             artists = []
             for value in smallForm.data.items():
                 if (value[1] is not ''):
                     artists.append(value[1])
 
-            #q = Queue(connection=Redis(config.redis_url, config.redis_port,
-            #                           config.redis_pass))
+            smallResults = q.enqueue_call(func=getArtists, args=(table,
+                                                                 *artists))
 
-            q = Queue(connection=conn)
-            smallResults = q.enqueue(getArtists, table, *artists)
-            smallResults = smallResults.result
-            print(smallResults)
-            #smallResults.values.tolist()
+            while smallResults.result is None:
+                time.sleep(1)
+                print('loading')
+            smallResults = smallResults.result.values.tolist()
+
             return render_template('smallResults.html',
                                    smallResults=smallResults)
         else:

@@ -6,7 +6,6 @@ listen = ['high', 'default', 'low']
 
 redis_url = os.getenv('REDISTOGO_URL',
                       'redis://redistogo:61f64edfbf63e3009926b41556e83aee@catfish.redistogo.com:10342/')
-print(redis_url)
 if not redis_url:
     raise RuntimeError('Set up Redis to go first.')
 
