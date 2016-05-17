@@ -100,7 +100,7 @@ def festivalsResults():
                             artists.append(value[1])
                             print(value[1])
 
-                festResults = recommend(table, *artists).values.tolist()
+                festResults = recommend(table, *artists).delay().values.tolist()
 
                 if table == 'govball':
                     festival = "Governor's Ball"
