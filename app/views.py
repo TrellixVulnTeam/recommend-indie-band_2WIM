@@ -1,11 +1,13 @@
 from flask import render_template, request
 import pylast
-import celery
+from rq import Queue
+import redis
+from worker import conn
+import time
 
 from app import app
 from .models import getArtists
 from .forms import ArtistsForm, FestivalForm
-from .tasks import recommend
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -61,9 +63,12 @@ def smallResults():
                 if (value[1] is not ''):
                     artists.append(value[1])
 
-            smallResults = recommend.delay(table, *artists)
+            #q = Queue(connection=Redis(config.redis_url, config.redis_port,
+            #                           config.redis_pass))
+            conn = redis.from_url(config.redis_url)
+            q = Queue(connection=conn)
+            smallResults = q.enqueue(getArtists, table, *artists)
             smallResults = smallResults.result
-            print(smallResults)
             #smallResults.values.tolist()
             return render_template('smallResults.html',
                                    smallResults=smallResults)
