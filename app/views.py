@@ -10,7 +10,8 @@ from .tasks import recommend
 @app.route('/', methods=['GET', 'POST'])
 def home():
     form = ArtistsForm()
-    return render_template('home.html', form=form)
+    return render_template('construction.html')
+    #return render_template('home.html', form=form)
 
 
 @app.route('/results', methods=['GET', 'POST'])
