@@ -3,7 +3,7 @@ import pylast
 from rq import Queue
 import redis
 from worker import conn
-import time
+
 
 from app import app
 from .models import getArtists
