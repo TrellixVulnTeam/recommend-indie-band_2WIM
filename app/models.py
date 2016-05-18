@@ -20,29 +20,6 @@ def dbCon():
     return con
 
 
-def insertData(searchType, artist1, artist2, artist3, artist4, artist5):
-    curTime = datetime.datetime.now()
-    con = dbCon()
-    cur = con.cursor()
-    cur.execute('INSERT INTO usersearch (curtime, searchType, artist1, artist2, \
-                artist3, artist4, artist5) VALUES (%s, %s, %s, %s, %s, %s, \
-                %s)', (curTime, searchType, artist1, artist2, artist3, artist4,
-                       artist5))
-    con.commit()
-    cur.close()
-    con.close()
-
-
-def getData(table):
-    con = dbCon()
-    cur = con.cursor()
-    cur.execute('SELECT * FROM ' + table)
-    results = cur.fetchall()
-    cur.close()
-
-    return results
-
-
 def getTags(table, *artists):
     # User given artists from web form
     tag_list = []
@@ -88,6 +65,29 @@ def Convert(table, *artists):
     return tag_frame
 
 
+def getData(table, *artists):
+    con = dbCon()
+    cur = con.cursor()
+
+    tag_frame = Convert(table, *artists)
+    tags = tag_frame['tag'].tolist()
+    tagstr = ''
+    for tag in range(len(tags)):
+        if tag != 4:
+            tagstr += "'" + tags[tag-1] + "', "
+        else:
+            tagstr += "'" + tags[tag-1] + "'"
+    cur.execute('SELECT * FROM ' + table + ' WHERE tag1 = any(array[' + tagstr + '])' \
+                'OR tag2 = any(array[' + tagstr + '])' \
+                'OR tag3 = any(array[' + tagstr + '])' \
+                'OR tag4 = any(array[' + tagstr + '])' \
+                'OR tag5 = any(array[' + tagstr + '])')
+    results = cur.fetchall()
+    cur.close()
+
+    return results
+
+
 def Scale(table, *artists):
     tag_frame = Convert(table, *artists)
     tag_frame = tag_frame.sort_values(by='weight', ascending=False)
@@ -115,7 +115,7 @@ def Scale(table, *artists):
 
 def getDBData(table, *artists):
     # Connect to DB and get all of the data stored in a DF
-    results = getData(table)
+    results = getData(table, *artists)
 
     columns = ['artist', 'tag1', 'weight1', 'tag2', 'weight2', 'tag3',
                'weight3', 'tag4', 'weight4', 'tag5', 'weight5']
