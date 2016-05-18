@@ -95,17 +95,16 @@ def getData(table, *artists):
 
     tag_frame = Convert(table, *artists)
     tag_frame = tag_frame.sort_values(by='weight', ascending=False)
-    tag_frame = tag_frame[0:6]
-    print(tag_frame)
+    tag_frame = tag_frame[0:5]
     tags = tag_frame['tag'].tolist()
     tagstr = ''
-    print(tags)
     for tag in range(len(tags)):
-        if tag != 5:
+        if tag != 4:
             tagstr += "'" + tags[tag-1] + "', "
         else:
             tagstr += "'" + tags[tag-1] + "'"
 
+    print(tagstr)
     cur.execute('SELECT * FROM ' + table + ' WHERE tag1 = any(array[' + tagstr + '])' \
                 'OR tag2 = any(array[' + tagstr + ']) ' \
                 'OR tag3 = any(array[' + tagstr + ']) ' \
@@ -115,7 +114,6 @@ def getData(table, *artists):
     cur.close()
 
     return results
-
 
 
 def getDBData(table, *artists):
