@@ -64,30 +64,6 @@ def Convert(table, *artists):
 
     return tag_frame
 
-
-def getData(table, *artists):
-    con = dbCon()
-    cur = con.cursor()
-
-    tag_frame = Convert(table, *artists)
-    tags = tag_frame['tag'].tolist()
-    tagstr = ''
-    for tag in range(len(tags)):
-        if tag != 4:
-            tagstr += "'" + tags[tag-1] + "', "
-        else:
-            tagstr += "'" + tags[tag-1] + "'"
-    cur.execute('SELECT * FROM ' + table + ' WHERE tag1 = any(array[' + tagstr + '])' \
-                'OR tag2 = any(array[' + tagstr + '])' \
-                'OR tag3 = any(array[' + tagstr + '])' \
-                'OR tag4 = any(array[' + tagstr + '])' \
-                'OR tag5 = any(array[' + tagstr + '])')
-    results = cur.fetchall()
-    cur.close()
-
-    return results
-
-
 def Scale(table, *artists):
     tag_frame = Convert(table, *artists)
     tag_frame = tag_frame.sort_values(by='weight', ascending=False)
@@ -111,6 +87,35 @@ def Scale(table, *artists):
     userFrame.index = range(1, len(userFrame) + 1)
 
     return userFrame
+
+
+def getData(table, *artists):
+    con = dbCon()
+    cur = con.cursor()
+
+    tag_frame = Convert(table, *artists)
+    tag_frame = tag_frame.sort_values(by='weight', ascending=False)
+    tag_frame = tag_frame[0:6]
+    print(tag_frame)
+    tags = tag_frame['tag'].tolist()
+    tagstr = ''
+    print(tags)
+    for tag in range(len(tags)):
+        if tag != 5:
+            tagstr += "'" + tags[tag-1] + "', "
+        else:
+            tagstr += "'" + tags[tag-1] + "'"
+
+    cur.execute('SELECT * FROM ' + table + ' WHERE tag1 = any(array[' + tagstr + '])' \
+                'OR tag2 = any(array[' + tagstr + ']) ' \
+                'OR tag3 = any(array[' + tagstr + ']) ' \
+                'OR tag4 = any(array[' + tagstr + ']) ' \
+                'OR tag5 = any(array[' + tagstr + '])')
+    results = cur.fetchall()
+    cur.close()
+
+    return results
+
 
 
 def getDBData(table, *artists):

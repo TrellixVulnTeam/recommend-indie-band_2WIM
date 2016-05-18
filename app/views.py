@@ -88,14 +88,12 @@ def festivalsResults():
             if request.method == 'POST':
 
                 table = festForm.selectFest.data
-                print(table)
 
                 artists = []
                 for value in festForm.data.items():
                     if (value[1] is not ''):
                         if value[1] is not table:
                             artists.append(value[1])
-                            print(value[1])
 
                 festResults = getArtists(table, *artists).values.tolist()
 
