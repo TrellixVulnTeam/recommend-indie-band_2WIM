@@ -1,15 +1,10 @@
 from flask import render_template, request
 import pylast
-from rq import Queue
-import redis
-from worker import conn
-import time
 
 from app import app
 from .models import getArtists
 from .forms import ArtistsForm, FestivalForm
 
-q = Queue(connection=conn)
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -24,17 +19,13 @@ def results():
     try:
         if request.method == 'POST' and form.validate():
             table = 'Artists'
+
             artists = []
             for value in form.data.items():
                 if (value[1] is not ''):
                     artists.append(value[1])
 
-            results = q.enqueue_call(func=getArtists, args=(table, *artists))
-            while results.result is None:
-                time.sleep(1)
-                print('loading')
-            results = results.result.values.tolist()
-
+            results = getArtists(table, *artists).values.tolist()
             return render_template('results.html', results=results)
         else:
             error = "Please be sure to enter 5 artists with correct spelling" \
@@ -58,18 +49,13 @@ def smallResults():
     try:
         if request.method == 'POST' and smallForm.validate():
             table = 'artistsSmall'
+
             artists = []
             for value in smallForm.data.items():
                 if (value[1] is not ''):
                     artists.append(value[1])
 
-            smallResults = q.enqueue_call(func=getArtists, args=(table,
-                                                                 *artists))
-
-            while smallResults.result is None:
-                time.sleep(1)
-                print('loading')
-            smallResults = smallResults.result.values.tolist()
+            smallResults = getArtists(table, *artists).values.tolist()
 
             return render_template('smallResults.html',
                                    smallResults=smallResults)
@@ -111,7 +97,7 @@ def festivalsResults():
                             artists.append(value[1])
                             print(value[1])
 
-                festResults = recommend(table, *artists).values.tolist()
+                festResults = getArtists(table, *artists).values.tolist()
 
                 if table == 'govball':
                     festival = "Governor's Ball"
