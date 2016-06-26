@@ -1,16 +1,17 @@
-body{
+	/*body{
 	background-color: #A2D9CE;
-	/*
+
 	background: linear-gradient(to bottom, #73C6B6, #e3e3e3);
-	*/
+
 	font-family: 'Raleway', sans-serif;
 }
 .results h1 h2{
 	font-weight: lighter;
 }
+	*/
 .panel {
 	background-color: #ffffff;
-	border: 2px solid #516D67;
+	border: 2px solid #000000;
 	border-radius: 5px;
 	color: #3D514D;
 	max-width: 300px;
@@ -18,8 +19,9 @@ body{
 	margin-right: 0;
 }
 .panel-heading {
-	background-color: #DCF1ED;
-	border-bottom: 2px solid #516D67;
+	padding-right: 25px;
+	background-color: #201e1e;
+	border-bottom: 2px solid #000000;
 	border-radius: 5px;
 }
 .artist {
@@ -28,7 +30,7 @@ body{
 	word-wrap: normal;
 }
 .img-circle {
-		border: 2px solid #516D67;
+		border: 2px solid #000000;
 }
 img {
 	max-width: 100%;

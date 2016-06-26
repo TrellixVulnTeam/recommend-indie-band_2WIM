@@ -1,8 +1,9 @@
 from flask import render_template, request
 import pylast
+import datetime
 
 from app import app
-from .models import getArtists
+from .models import getArtists, dbCon
 from .forms import ArtistsForm, FestivalForm
 
 
@@ -112,6 +113,51 @@ def festivalsResults():
         except pylast.WSError:
             return render_template('error.html')
         return render_template('festival.html', festForm=festForm, error=error)
+
+
+@app.route('/reviews')
+def reviews():
+    date = datetime.datetime.now()
+    date_str = str(date.year) + '-' + str(date.month) + '-' + str(date.day)
+    con = dbCon()
+    cur = con.cursor()
+    cur.execute('SELECT artist, album, rating, summary, release_date,' \
+                'genre1, genre2, genre3 ' \
+                'FROM reviews '
+                'WHERE (%s) - release_date <= 14 '
+                'ORDER BY release_date desc', (date_str,))
+    reviews = cur.fetchall()
+    cur.close()
+    return render_template('reviews.html', reviews=reviews)
+
+
+@app.route('/reviews/all')
+def all_reviews():
+    con = dbCon()
+    cur = con.cursor()
+    cur.execute('SELECT artist, album, rating, summary, release_date,' \
+                'genre1, genre2, genre3 FROM reviews')
+    reviews = cur.fetchall()
+    cur.close()
+
+    return render_template('all_reviews.html', reviews=reviews)
+
+
+@app.route('/reviews/<artist>/<album>')
+def specific_review(artist, album):
+    con = dbCon()
+    cur = con.cursor()
+    cur.execute("SELECT html_code FROM reviews " \
+                "WHERE artist='" + artist + "' AND album='" + album + "'")
+    review_html = cur.fetchone()
+
+    cur.execute("SELECT artist, album, rating, writer, release_date FROM reviews " \
+                "WHERE artist='" + artist + "' AND album='" + album + "'")
+    review_info = cur.fetchall()
+    cur.close()
+
+    return render_template('album_review.html', review_html=review_html[0],
+                           review_info=review_info[0])
 
 
 @app.route('/how_it_works')

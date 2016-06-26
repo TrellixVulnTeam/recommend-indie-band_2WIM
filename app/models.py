@@ -64,6 +64,7 @@ def Convert(table, *artists):
 
     return tag_frame
 
+
 def Scale(table, *artists):
     tag_frame = Convert(table, *artists)
     tag_frame = tag_frame.sort_values(by='weight', ascending=False)

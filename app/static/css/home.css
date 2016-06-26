@@ -1,23 +1,4 @@
-body{
-	background-color: #e3e3e3;
-	font-family: 'Raleway', sans-serif;
-}
-.jumbotron{
-	background-color: #45B39D;
-}
-.jumbotron h1{
-	color: #e3e3e3;
-	font-weight: lighter;
-}
-.jumbotron p{
-	color: #e3e3e3;
-	font-weight: lighter;
-}
-.center_div{
-    margin: 0 auto;
-    width:75%;
-    text-align: middle;
-}
+
 #hiddenForm {
 	display: none;
 }

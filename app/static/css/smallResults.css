@@ -1,27 +1,25 @@
-body{
-	background-color: #98BBD3;
-	font-family: 'Raleway', sans-serif;
-}
-
-.results h1 h2{
-	font-weight: lighter;
-}
 .panel {
 	background-color: #ffffff;
-	border: 2px solid #41505A;
+	border: 2px solid #000000;
 	border-radius: 5px;
-	color: #2B363C;
+	color: #3D514D;
 	max-width: 300px;
 	align-self: stretch;
 	margin-right: 0;
 }
 .panel-heading {
-	background-color: #85C2E9;
-	border-bottom: 2px solid #41505A;
+	padding-right: 25px;
+	background-color: #201e1e;
+	border-bottom: 2px solid #000000;
 	border-radius: 5px;
 }
-.img-circle{
-	border: 2px solid #41505A;
+.artist {
+	padding-left: 10px;
+	padding-right: 10px;
+	word-wrap: normal;
+}
+.img-circle {
+		border: 2px solid #000000;
 }
 img {
 	max-width: 100%;
@@ -36,8 +34,8 @@ img {
 	vertical-align: middle;
 }
 .tags{
-	vertical-align: middle;
-	float: right;
+	padding-left: 50px;
+	float: left;
 }
 p {
 	font-size: 16px;

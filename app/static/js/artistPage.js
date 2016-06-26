@@ -1,8 +1,4 @@
 $(document).ready(function() {
-  // Assign random color to jumbotron
-  var colors = ['#212F3C', '#196F3D', '#0E6655', '#117864', '#154360'];
-  var randColor = colors[Math.floor(Math.random() * colors.length)];
-  $('.jumbotron').css('background-color', randColor);
 
   // Get artist name
   var artistName = $('#artistName').html();
