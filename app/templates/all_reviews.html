@@ -9,7 +9,8 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	{% block scripts %}
 	{{super()}}
-	<script type="text/javascript" src="{{url_for('static', filename='js/getAllAlbumArt.js') }}"></script>
+		<script type="text/javascript" src="{{url_for('static', filename='js/filter.js') }}"></script>
+		<script type="text/javascript" src="{{url_for('static', filename='js/getAllAlbumArt.js') }}"></script>
 		<script type="text/javascript" src="{{url_for('static', filename='js/pace.min.js') }}"></script>
 		<script type="text/javascript" src="{{url_for('static', filename='js/ga.js') }}"></script>
 		<script src="https://apis.google.com/js/client.js?onload=init"></script>
@@ -26,9 +27,16 @@
   <div class="jumbotron" align="middle">
     <h1>All Album Reviews</h1>
   </div>
+	<div class="searchBar" align=middle>
+	<h2>Search by artist, album, or genre:</h2>
+		<input type="text" class="form-control" id="filterSearch">
+		<button type="button" class="btn btn-default" id="filterButton">Search</button>
+		<button type="button" class="btn btn-default" id="clearFilterButton">Clear Filter</button>
+</div>
+<br/>
   <div class="postContainers">
     {% for review in reviews %}
-		<div align=middle class="panel">
+		<div align=middle class="panel" id="panel{{ loop.index }}">
 		<div align=middle class="panel-heading" id="imgSlot{{ loop.index }}"></div>
     	<h2><a href="/reviews/{{ review[0] }}/{{ review[1]}}"</a>{{ review[0] }} - {{ review[1]}}</a></h2>
 			<p>{{ review[5] }} | {{ review[6] }} | {{ review[7] }}</p>

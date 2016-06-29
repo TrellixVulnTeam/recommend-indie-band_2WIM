@@ -1,7 +1,12 @@
 p[class^="hidden"] {
   display: none;
 }
-
+#filterSearch {
+  width: 200px;
+}
+#clearFilterButton {
+  display: none;
+}
 .panel {
 background-color: #ffffff;
 border: 2px solid #000000;
@@ -15,7 +20,6 @@ margin-right: 0;
 padding-right: 25px;
 background-color: #201e1e;
 border-bottom: 2px solid #000000;
-border-radius: 5px;
 }
 .artist {
 padding-left: 10px;

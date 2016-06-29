@@ -6,6 +6,11 @@ from app import app
 from .models import getArtists, dbCon
 from .forms import ArtistsForm, FestivalForm
 
+'''
+@app.route('/test')
+def test():
+    return render_template('example.html')
+'''
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -136,7 +141,8 @@ def all_reviews():
     con = dbCon()
     cur = con.cursor()
     cur.execute('SELECT artist, album, rating, summary, release_date,' \
-                'genre1, genre2, genre3 FROM reviews')
+                'genre1, genre2, genre3 FROM reviews ' \
+                'order by release_date desc')
     reviews = cur.fetchall()
     cur.close()
 
@@ -158,6 +164,12 @@ def specific_review(artist, album):
 
     return render_template('album_review.html', review_html=review_html[0],
                            review_info=review_info[0])
+
+
+@app.route('/quick_search/<artist>')
+def quick_search(artist):
+    results = getArtists('artists', artist).values.tolist()
+    return render_template('results.html', results=results)
 
 
 @app.route('/how_it_works')

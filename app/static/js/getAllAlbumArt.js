@@ -3,7 +3,6 @@ $(document).ready(function() {
   $('.panel').each(function() {
     var artist = $('.hiddenArtist' + i).html().replace(/\s+/g, '+');
     var album = $('.hiddenAlbum' + i).html().replace(/\s+/g, '+');
-    console.log(artist, album);
     getAlbums(artist, album, i);
     i++;
   });
@@ -19,7 +18,6 @@ function getAlbums(artist, album, i){
       '&album=' + album +
       '&format=json',
     success: function(data) {
-      console.log(data);
         $('#imgSlot' + i).append('<img src="' + data.album.image[2]['#text'] + '"/>');
       },
       error: function(code, message) {

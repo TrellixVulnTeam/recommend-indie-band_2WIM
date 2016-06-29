@@ -105,7 +105,6 @@ def getData(table, *artists):
         else:
             tagstr += "'" + tags[tag-1] + "'"
 
-    print(tagstr)
     cur.execute('SELECT * FROM ' + table + ' WHERE tag1 = any(array[' + tagstr + '])' \
                 'OR tag2 = any(array[' + tagstr + ']) ' \
                 'OR tag3 = any(array[' + tagstr + ']) ' \

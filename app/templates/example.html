@@ -1,0 +1,39 @@
+<html lang="en">
+{% extends 'header.html' %}
+	<head>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css')}}">
+		<link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	    <link href="/static/css/bootstrap-responsive.min.css" rel="stylesheet">
+	    <script src="http://code.jquery.com/jquery-latest.js"></script>
+	    <script src="/static/js/bootstrap.min.js"></script>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	{% block scripts %}
+	{{super()}}
+		<script type="text/javascript" src="{{url_for('static', filename='js/pace.min.js') }}"></script>
+		<script type="text/javascript" src="{{url_for('static', filename='js/ga.js') }}"></script>
+		<script type="text/javascript" src="{{url_for('static', filename='js/chooseFestival.js') }}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/homeButton.js') }}"></script>
+	{% endblock %}
+	{% block styles %}
+    {{super()}}
+      <link rel="stylesheet" href="{{url_for('.static', filename='css/festival.css')}}">
+			<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+  	{% endblock %}
+	</head>
+{% block title %}Festival Band Recommender{% endblock %}
+{% block content %}
+<body class="mainContent">
+<div class="jumbotron" align="middle">
+  <h1>Festival Band Recommender</h1>
+  <h3>Know who's playing at your festival!</h3>
+  <p> To start, choose your festival below. Then, enter at least one of your favorite bands and
+  we'll recommend 25 other bands you would enjoy at that festival.</p>
+</div>
+
+
+<p><i>Earrings Off!</i> is not a record capable of making decisions. It seems to have no idea what it wants to be or where it wants to go. Adult Jazz, the British experimental pop/rock outfit behind <i>Earrings Off!,</i> refers to it as a <a href="http://adultjazz.tumblr.com/post/142258417319">"thing"</a> because it lies right in that runtime sweet spot where it's not quite long enough to be recognized as a full-length LP, but not quite sparse and minimal enough to be an EP. Regardless of its length, this mini-album packs a surprisingly massive energy that seldom finds itself getting tiresome. The length of this 'thing' is important, though, in context to the sounds that accompany it. I feel like if this album were any longer, it would've been annoying. Any shorter, and it would've been disappointing. Each song stops right when the listener feels they've had enough, which is wonderful. It gives the album a sort of subtlety, even though its tracks can sometimes be loud and a bit obnoxious.<br />
+   <p><i>Earrings Off!</i> is, however, a collection of polar opposites. The LP/EP/thingy is a polar opposite to its predecessor, 2014's <i>Gist Is,</i> in nearly every way. Where <i>Gist Is</i> happens to be more minimal in instrumental arrangement, <i>Earrings Off!</i> is deliberately maximal and brash. <i>Gist Is</i> has a few longer tracks (Hum and Spook, for example, clock in at 7:33 and 9:45, respectively), but <i>Earrings Off!</i> is comprised of mostly shorter tracks. <i>Gist Is</i> is mostly acoustic and woodsy, while <i>Earrings Off!</i> drops the guitars almost entirely and opts for a more electronic sound. It's a thoughtful, introspective album and the results have been polarizing. Usually, those who hear it either love it or hate it, except for Pitchfork, who were <a href="http://pitchfork.com/reviews/albums/21936-earrings-off/">mostly indifferent</a> about it.<br />
+   <p>One of the biggest problems with this mini-album is the fact that while it does mostly ride the line between beautiful and annoying, it has a tendency to just immerse itself entirely into the annoying side of things. Take, for instance, the three tracks that serve as interludes. Each one has a title that starts with "Cry for" and is surrounded by parentheses. The (Cries) are supposed to give you a breather to recover before moving onto the next track, but they effectively do the opposite. They can be exhausting at times. None of them are absolutely terrible because of their brief nature, but they don't really add anything to the album's overall atmosphere. They just sort of break the flow. From the weird, stumbling instrumental blips featured in (Cry for Time Off) to the grating, stitched-together vocalizations of (Cry for Coherence), none of them are very entertaining. This especially applies to the last track, (Cry for Home), which is somewhat reminiscent of The Knife's song, Fracking Fluid Injection, one of my least favorite tracks from the otherwise mystifying <i>Shaking the Habitual.</i></p><br />
+   <p>Another issue with the record is the way it's mixed. It's so heavily compressed that it can sometimes be hard to tell the instruments apart. Some parts are obviously compressed to an extreme point for effect, like the <i>"ooohs," "ahs,"</i> and <i>"ehs"</i> that run throughout "Ooh Ah Eh," but the rest of the album seems mixed like it was designed to be louder than everything else in your library.<br />
+   <p>Overall, <i>Earrings Off!</i> signifies a major growth for Adult Jazz. They do a lot to ensure that this album remains thought-provoking, yet entertaining and fully enjoyable, and they don't seem to care much about looking silly in the process. They seem to be more confident this time around, albeit completely unhinged.
+{% endblock %}
