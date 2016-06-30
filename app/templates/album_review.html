@@ -42,19 +42,20 @@
   </div>
   <div class="review_info" align="middle">
 		<h1>{{ review_info[0] }} - {{ review_info[1] }}</h1>
-		<h3>
-			{% if review_info[3] == 'Brock Splawski' %}
-			<img class="img-circle" src="{{url_for('static', filename='images/writers/brock.jpg')}}"></img>
-			{% elif review_info[3] == 'Hyper Typewriter' %}
-			<img class="img-circle" src="{{url_for('static', filename='images/writers/hyper.png')}}"></img>
-			{% endif %}
-		Written by: {{ review_info[3] }}
-	</h3>
 		<h1>{{ review_info[2]}}</h1>
   </div>
 	<div class="review">
 	{{ review_html | safe }}
 	</div>
+	<br/>
+	<h4 align="middle">
+		{% if review_info[3] == 'Brock Splawski' %}
+		<img class="img-circle" src="{{url_for('static', filename='images/writers/brock.jpg')}}"></img>
+		{% elif review_info[3] == 'Hyper Typewriter' %}
+		<img class="img-circle" src="{{url_for('static', filename='images/writers/hyper.png')}}"></img>
+		{% endif %}
+	Written by: {{ review_info[3] }}
+</h4>
 <!-- FB button -->
 <br/>
 <br/>

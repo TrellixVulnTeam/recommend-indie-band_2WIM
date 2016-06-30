@@ -6,11 +6,11 @@ from app import app
 from .models import getArtists, dbCon
 from .forms import ArtistsForm, FestivalForm
 
-'''
+
 @app.route('/test')
 def test():
     return render_template('example.html')
-'''
+
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
