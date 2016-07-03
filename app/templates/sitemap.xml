@@ -1,9 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    {% for page in pages %}
-    <url>
-        <loc>{{page[0]|safe}}</loc>
-        <lastmod>{{page[1]}}</lastmod>
-    </url>
-    {% endfor %}
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+<url>
+  <loc>http://www.recommendindieband.com/</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/small</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/festivals</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/how_it_works</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/reviews</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/reviews/all</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/reviews/Adult%20Jazz/Earrings%20Off!</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/quick_search/Adult%20Jazz</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/artist/Entrepreneurs</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/artist/Circa%20Survive</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/artist/Sonic%20Youth</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/artist/764-HERO</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/artist/Matthew%20That</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/artist/A%20Whisper%20in%20the%20Noise</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/artist/Animal%20Collective</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/artist/TV%20on%20the%20Radio</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/artist/Colony%20House</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/artist/Ween</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/artist/The%20Dismemberment%20Plan</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/artist/Clearlake</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/artist/Smallpools</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/artist/Bombadil</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/artist/Kaddisfly</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/artist/Long-view</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/artist/Sandkings</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/artist/Minus%20the%20Bear</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/artist/Spanish%20Prisoners</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/artist/Howler</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/artist/The%20Shins</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/artist/Magic%20Bullets</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/artist/Clann%20Z&#195;</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/artist/Paper%20Rival</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.recommendindieband.com/artist/Superchunk</loc>
+  <changefreq>daily</changefreq>
+</url>
 </urlset>
