@@ -1,4 +1,4 @@
-from flask import render_template, request
+from flask import render_template, request, make_response
 import pylast
 import datetime
 
@@ -175,3 +175,18 @@ def quick_search(artist):
 @app.route('/how_it_works')
 def how():
     return render_template('how.html')
+
+
+@app.route('/sitemap.xml')
+def sitemap():
+    """Generate sitemap.xml"""
+    pages = []
+    for rule in app.url_map.iter_rules():
+        if "GET" in rule.methods and len(rule.arguments) == 0:
+            pages.append(rule.rule)
+
+    sitemap_xml = render_template('sitemap.xml', pages=pages)
+    response = make_response(sitemap_xml)
+    response.headers["Content-Type"] = "application/xml"
+
+    return response
