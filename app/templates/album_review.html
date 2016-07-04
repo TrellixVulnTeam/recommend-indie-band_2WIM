@@ -53,6 +53,8 @@
 		<img class="img-circle" src="{{url_for('static', filename='images/writers/brock.jpg')}}"></img>
 		{% elif review_info[3] == 'Hyper Typewriter' %}
 		<img class="img-circle" src="{{url_for('static', filename='images/writers/hyper.png')}}"></img>
+		{% elif review_info[3] == "Michael O'Neill" %}
+		<img class="img-circle" src="{{url_for('static', filename='images/writers/michael.png')}}"></img>
 		{% endif %}
 	Written by: {{ review_info[3] }}
 </h4>

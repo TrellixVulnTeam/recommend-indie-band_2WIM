@@ -38,7 +38,7 @@
 			<p class="hiddenArtist{{ loop.index }}">{{ review[0] }}</p>
 			<p class="hiddenAlbum{{ loop.index }}">{{ review[1] }}</p>
 		 <h2>{{ review[2] }}</h2>
-		 <p>{{ review[3] }}</p>
+		 <p>{{ review[3] | safe }}</p>
 	 </div>
 	 {% endfor %}
  </div>
