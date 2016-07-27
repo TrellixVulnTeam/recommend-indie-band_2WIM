@@ -35,9 +35,11 @@ def results():
 
             results = getArtists(table, *artists).values.tolist()
             return render_template('results.html', results=results)
+
         else:
             error = "Please be sure to enter 5 artists with correct spelling" \
                     " and punctuation"
+
 
     except pylast.WSError:
         return render_template('error.html')
@@ -131,7 +133,7 @@ def reviews():
     cur.execute('SELECT artist, album, rating, summary, release_date,' \
                 'genre1, genre2, genre3 ' \
                 'FROM reviews '
-                'WHERE (%s) - release_date <= 14 '
+                'WHERE (%s) - release_date <= 28 '
                 'ORDER BY release_date desc', (date_str,))
     reviews = cur.fetchall()
     cur.close()
