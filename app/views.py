@@ -4,7 +4,7 @@ import datetime
 
 from app import app
 from .models import getArtists, dbCon
-from .forms import ArtistsForm, FestivalForm
+from .forms import ArtistsForm, FestivalForm, TopAlbums
 
 
 '''
@@ -39,7 +39,6 @@ def results():
         else:
             error = "Please be sure to enter 5 artists with correct spelling" \
                     " and punctuation"
-
 
     except pylast.WSError:
         return render_template('error.html')
@@ -184,3 +183,9 @@ def how():
 @app.route('/sitemap.xml')
 def sitemap():
     return render_template('sitemap.xml')
+
+
+@app.route('/top_albums')
+def top_albums():
+    albumForm = TopAlbums()
+    return render_template('top_albums.html', albumForm=albumForm)
